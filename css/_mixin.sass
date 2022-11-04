@@ -1,0 +1,36 @@
+@mixin screen-size( $point )
+    @if $point == xxxl
+        @media only screen and (max-width: 1920px)
+            @content
+    @else if $point == xxl
+        @media only screen and (max-width: 1440px)
+            @content
+    @else if $point == xl
+        @media only screen and (max-width: 1200px)
+            @content
+    @else if $point == lg
+        @media only screen and (max-width: 992px)
+            @content
+    @else if $point == md
+        @media only screen and (max-width: 768px)
+            @content
+    @else if $point == sm
+        @media only screen and (max-width: 576px)
+            @content
+    @else if $point == s
+        @media only screen and (max-width: 428px)
+            @content
+    @else if $point == xs
+        @media only screen and (max-width: 375px)
+            @content
+    @else if $point == xxs
+        @media only screen and (max-width: 320px)
+            @content
+    @else if $point == iPad
+        @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)
+            @content
+    @else if $point == iPad-Pro
+        @media only screen and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)
+            @content
+
+

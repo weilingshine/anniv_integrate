@@ -1,0 +1,203 @@
+//
+// 共用樣式
+//
+html, body
+    color: map-get( $Color, Black )
+    font:
+        family: 'Noto Sans TC', sans-serif
+        size: map-get( $Text, md )
+        weight: 400
+    letter-spacing: 1px
+    scroll-behavior: smooth
+    // For Firefox
+    scrollbar-color: rgba( 30, 30, 30, .8) rgba( 30, 30, 30, .3)
+    scrollbar-width: thin
+    // For Chrome
+    &::-webkit-scrollbar
+        width: 8px
+        height: 8px
+        background: transparent
+        padding-right: 10px
+    &::-webkit-scrollbar-thumb
+        background: rgba( 30, 30, 30, .8)
+    &::-webkit-scrollbar-track
+        background: transparent
+    &::-webkit-scrollbar-track-piece
+        background: rgba( 30, 30, 30, .3)
+
+*
+    box-sizing: border-box
+
+::selection
+    background: map-get( $Color, primary )
+    color: white
+
+.header-img
+    display: block
+    margin-top: 58px
+
+a
+    color: inherit
+    display: inline-block
+    text-decoration: none
+
+img
+    width: 100%
+    max-width: 100%
+    height: auto
+
+ul
+    margin: 0
+    list-style: none
+
+.container
+    width: 100%
+    max-width: 1400px
+    margin: 0 auto
+    padding: 0 1.5rem
+
+
+//
+// 標題
+//
+.section-title
+    font:
+        size: map-get( $Text, xl )
+        weight: 600
+    // margin: 0 0 1rem
+
+
+//
+// 文字
+//
+.text
+    &-gray
+        color: map-get( $Color, gray )
+    &-right
+        text-align: right
+
+
+//
+// 按鈕
+//
+.btn
+    background: map-get( $Color, thirdary )
+    border: 0
+    border-radius: 50px
+    cursor: pointer
+    font:
+        size: map-get( $Text, md )
+        weight: 600
+    padding: 8px 24px
+    transition: .3s
+    +screen-size(md)
+        font-size: map-get( $Text, sm )
+    &:hover
+        background: map-get( $Color, secondary )
+        color: white
+    &-open-modal
+        cursor: pointer
+    &-close
+        color: map-get( $Color, black )
+
+
+
+//
+// 輪播
+//
+.swiper
+    &-slide
+        margin: 1rem 0 0
+        &:hover
+            transition: .3s
+            transform: translateY(-10px)
+    &-overflow, &-discount
+        overflow: hidden
+    &-week
+        width: 65%
+        margin: 0 auto
+        overflow: hidden
+        +screen-size(xxl)
+            width: 95%
+        +screen-size(md)
+            width: 100%
+
+
+
+//
+// Modal
+//
+.modal
+    width: 100%
+    height: 100%
+    background: rgba( 0, 0, 0, .7 )
+    box-shadow: 5px 5px 15px rgba( 0, 0, 0, .3 )
+    display: none
+    position: fixed
+    left: 0
+    top: 0
+    z-index: 9999
+    &-content
+        width: 80%
+        max-width: 600px
+        background: white
+        border-radius: 20px
+        line-height: 1.5
+        padding: 2.5rem 1rem
+        position: absolute
+        left: 50%
+        top: 50%
+        transform: translate( -50%, -50%)
+        text-align: center
+        +screen-size(sm)
+            font-size: map-get( $Text, sm )
+        h2
+            color: map-get( $Color, primary )
+            font:
+                size: map-get( $Text, xl )
+                weight: 600
+            margin: 0 0 .5rem
+            +screen-size(sm)
+                font-size: map-get( $Text, lg )
+        mark
+            background: transparent
+            color: map-get( $Color, secondary )
+        .btn-close
+            margin: 2rem auto 0
+
+
+//
+// 回頂端
+//
+.go-top
+    width: 40px
+    height: 40px
+    background: map-get($Color,secondary) url(../images/arrow_up.svg) no-repeat center 50%
+    border-radius: 50px
+    display: block
+    opacity: 0
+    overflow: hidden
+    position: fixed
+    right: 30px
+    bottom: 30px
+    text-indent: 100%
+    transition: opacity .3s 0s, visibility 0s .3s
+    transform: scale(1.5)
+    transform-origin: right bottom
+    visibility: hidden
+    @include screen-size(lg)
+        right: 20px
+        bottom: 20px
+        transform: scale(1.2)
+
+.go-top.is-visible,
+.go-top.fade-out,
+.no-touch .go-top:hover
+    transition: opacity .3s 0s, visibility 0s 0s
+
+.go-top.is-visible
+    visibility: visible
+    opacity: 1
+    z-index: 99
+
+

@@ -1,0 +1,90 @@
+//
+// 導覽列
+//
+%hambuger-bar
+    width: 26px
+    height: 2px
+    background: map-get( $Color, black )
+    border-radius: 10px
+
+
+nav
+    width: 100%
+    background: rgba( 255, 255, 255, .85 )
+    backdrop-filter: blur(80px)
+    box-shadow: 0 10px 15px rgba( 0, 0, 0, .1 )
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: .7rem 1rem
+    position: fixed
+    top: 0
+    z-index: 999
+    .logo
+        max-width: 120px
+    .sub-nav
+        display: flex
+        @include screen-size(md)
+            display: none
+        &.active
+            width: 100%
+            background: white
+            display: block
+            position: absolute
+            left: 0
+            top: 58px
+            text-align: center
+            z-index: 999
+        li
+            @include screen-size(md)
+                padding: 1rem .5rem
+                &:last-child
+                    padding-bottom: 2rem
+            &:not(:last-child)
+                margin: 0 2rem 0 0
+                @include screen-size(md)
+                    margin: 0
+        a:hover
+            color: map-get( $Color, primary )
+            transition: .3s
+    .hambuger
+        &-box
+            cursor: pointer
+            display: none
+            padding: .5rem
+            @include screen-size(md)
+                display: block
+            &.active
+                // position: fixed
+                // z-index: 9999
+                .hambuger-icon
+                    background: transparent
+                    &::before
+                        background: map-get( $Color, black )
+                        transform: rotate(45deg)
+                    &::after
+                        background: map-get( $Color, black )
+                        transform: rotate(-45deg)
+                ~ .right-btn
+                    opacity: 0
+                    pointer-events: none
+        &-icon
+            position: relative
+            transition: .3s
+            @extend %hambuger-bar
+            &::before
+                content: ''
+                display: inline-block
+                position: absolute
+                top: 0
+                transform: translateY(-8px)
+                transition: .3s
+                @extend %hambuger-bar
+            &::after
+                content: ''
+                display: inline-block
+                position: absolute
+                top: 0
+                transform: translateY(8px)
+                transition: .3s
+                @extend %hambuger-bar
